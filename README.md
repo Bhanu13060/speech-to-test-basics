@@ -16,3 +16,15 @@ def transcribe_with_google(audio_path):
 
 if __name__ == "__main__":
     transcribe_with_google("example.wav")
+
+wav2vec_app.py
+
+from transformers import pipeline
+
+def transcribe_with_wav2vec(audio_path):
+    asr = pipeline("automatic-speech-recognition", model="facebook/wav2vec2-base-960h")
+    result = asr(audio_path)
+    print("Transcription (Wav2Vec2):", result['text'])
+
+if __name__ == "__main__":
+    transcribe_with_wav2vec("example.wav")
